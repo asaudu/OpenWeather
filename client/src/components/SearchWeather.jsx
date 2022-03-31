@@ -59,9 +59,9 @@ function SearchWeather() {
 
   return (
     <div>
-      <div className="container mt-6">
+      <div className="container mt-7">
         <div className="row justify-content-center">
-          <div className="col-md-4">
+          <div className="col-md-7">
             <div className="card text-white text-center border-0">
               <img
                 src="https://images.unsplash.com/photo-1562948572-13e2f377a509?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80"
