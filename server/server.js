@@ -42,8 +42,8 @@ app.get('/api/users', cors(), async (req, res) => {
 
 //create the POST request
 app.post('/api/users', cors(), async (req, res) => {
-    const newUser = { user_name: req.body.user_name, favorite_city: req.body.favorite_city }
-    console.log([newUser.user_name, newUser.favorite_city]);
+    const newUser = { username: req.body.user_name, favoritecity: req.body.favorite_city }
+    console.log([newUser.username, newUser.favoritecity]);
     const result = await db.query(
         'INSERT INTO users(user_name, favorite_city) VALUES($1, $2) RETURNING *',
         [newUser.username, newUser.favoritecity]
