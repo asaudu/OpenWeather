@@ -31,15 +31,6 @@ app.get('/', (req, res) => {
 
 //create the get request
 app.get('/api/users', cors(), async (req, res) => {
-    // const STUDENTS = [
-
-    //     { id: 1, firstName: 'Lisa', lastName: 'Lee' },
-    //     { id: 2, firstName: 'Eileen', lastName: 'Long' },
-    //     { id: 3, firstName: 'Fariba', lastName: 'Dako' },
-    //     { id: 4, firstName: 'Cristina', lastName: 'Rodriguez' },
-    //     { id: 5, firstName: 'Andrea', lastName: 'Trejo' },
-    // ];
-    // res.json(STUDENTS);
     try{
         const { rows: users } = await db.query('SELECT * FROM users');
         res.send(users);
@@ -50,16 +41,16 @@ app.get('/api/users', cors(), async (req, res) => {
 });
 
 //create the POST request
-// app.post('/api/users', cors(), async (req, res) => {
-//     const newUser = { firstname: req.body.firstname, lastname: req.body.lastname }
-//     console.log([newUser.firstname, newUser.lastname]);
-//     const result = await db.query(
-//         'INSERT INTO students(firstname, lastname) VALUES($1, $2) RETURNING *',
-//         [newUser.firstname, newUser.lastname]
-//     );
-//     console.log(result.rows[0]);
-//     res.json(result.rows[0]);
-// });
+app.post('/api/users', cors(), async (req, res) => {
+    const newUser = { username: req.body.user_name, favoritecity: req.body.favorite_city }
+    console.log([newUser.username, newUser.favoritecity]);
+    const result = await db.query(
+        'INSERT INTO users(user_name, favorite_city) VALUES($1, $2) RETURNING *',
+        [newUser.username, newUser.favoritecity]
+    );
+    console.log(result.rows[0]);
+    res.json(result.rows[0]);
+});
 
 // console.log that your server is up and running
 app.listen(PORT, () => {

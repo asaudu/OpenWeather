@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import FavoriteCity from "./favoriteCity";
+import Form from "./form";
 
 function SearchWeather() {
    const [search, setSearch] = useState("Plano");
    const [data, setData] = useState({});
    const [input, setInput] = useState("");
+   const [city, setCity] = useState([]);
 
    let componentMounted = true;
 
@@ -48,10 +50,16 @@ function SearchWeather() {
       event.preventDefault();
       setSearch(input);
   }
-  //for the form onSubmit 
+  
+  const addCity = (newCity) => {
+    //console.log(newStudent);
+    //postStudent(newStudent);
+    setCity((city) => [...city, newCity]);
+  }
+
   return (
     <div>
-      <div className="container mt-5">
+      <div className="container mt-6">
         <div className="row justify-content-center">
           <div className="col-md-4">
             <div className="card text-white text-center border-0">
@@ -83,7 +91,8 @@ function SearchWeather() {
                     </button>
                   </div>
                 </form>
-                <FavoriteCity />
+                <FavoriteCity addCity={addCity}/>
+                <Form />
                 <div className="bg-dark bg-opacity-50 py-3">
                   <h2 className="card-title">{data?.name}</h2>
                   <p>{!data ? "Loading..." : ''}</p>

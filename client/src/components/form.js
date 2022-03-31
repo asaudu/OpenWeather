@@ -1,60 +1,72 @@
 import { useState } from "react";
 
 const Form = (props) => {
-    const [student, setStudent] = useState({
-        firstname: "",
-        lastname: ""
+    const [user, setUser] = useState({
+        user_name: "",
+        favorite_city: ""
     });
 
     //create functions that handle the event of the user typing into the form
     const handleNameChange = (event) => {
-        const firstname = event.target.value;
-        setStudent((student) => ({ ...student, firstname }));
+        const user_name = event.target.value;
+        setUser((user) => ({ ...user, user_name }));
 
     }
 
-    const handleLastnameChange = (event) => {
-        const lastname = event.target.value;
-        setStudent((student) => ({ ...student, lastname }));
+    const handleCityNameChange = (event) => {
+        const favorite_city = event.target.value;
+        setUser((user) => ({ ...user, favorite_city }));
 
     }
 
     //A function to handle the post request
-    const postStudent = (newStudent) => {
-        return fetch('http://localhost:8080/api/students', {
+    const postUser = (newUser) => {
+        return fetch('http://localhost:8080/api/users', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'}, 
-        body: JSON.stringify(newStudent)
+        body: JSON.stringify(newUser)
       }).then((response) => {
           return response.json()
       }).then((data) => {
         console.log("From the post ", data);
-        props.addStudent(data);
+        props.addUser(data);
       
     });
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        postStudent(student);
+        postUser(user);
         
     };
 
     return (
         <form onSubmit={handleSubmit}>
             <fieldset>
-                <label>Favorite City</label>
+                <label>New User</label>
                 <input
                     type="text"
                     id="add-user-name"
-                    placeholder="First Name"
+                    placeholder="Your Name"
                     required
-                    value={student.name}
+                    value={user.user_name}
                     onChange={handleNameChange}
 
                 />
+                <br/>
+                <label>Favorite City</label>
+                <input
+                    type="text"
+                    id="add-favorite-city"
+                    placeholder="City Name"
+                    required
+                    value={user.favorite_city}
+                    onChange={handleCityNameChange}
+
+                />
+                <button type="submit">Add City</button>
             </fieldset>
-            <button type="submit">Add City</button>
+            
         </form>
     );
 };
