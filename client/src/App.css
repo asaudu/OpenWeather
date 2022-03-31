@@ -1,6 +1,7 @@
 .favoriteCity {
-  /* list-style: none; */
+  list-style: none;
   text-align: center;
-  background-color: white;
-  color: black;
+  /* background-color: white; */
+  color: white;
+  margin-bottom: 50px;
 }

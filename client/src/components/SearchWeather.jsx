@@ -3,7 +3,7 @@ import FavoriteCity from "./favoriteCity";
 import Form from "./form";
 
 function SearchWeather() {
-   const [search, setSearch] = useState("Plano");
+   const [search, setSearch] = useState("");
    const [data, setData] = useState({});
    const [input, setInput] = useState("");
    const [city, setCity] = useState([]);
@@ -18,8 +18,9 @@ function SearchWeather() {
 //     //goes to the route below to get the response
 //     fetch("/getWeatherPlano")
 //       .then((res) => res.json())
-//       .then((data) => setData(data));
+//       .then((data) => setData(data)); 02cfcf682f2bd37a2b563392cc9c6d48
 //       //empty array below to make sure it only renders on the first render of component
+//REACT_APP_WEATHER_API_KEY
 //   }, []);
 
 //tutorial useEffect
@@ -41,10 +42,10 @@ function SearchWeather() {
 
 
    
-  let temp = (data?.main?.temp - 0).toFixed(2);
+  let temp = (data?.main?.temp - 0).toFixed(0);
 // //  console.log("main temp ", temp);
-    let temp_min = (data?.main?.temp_min - 0).toFixed(2);
-    let temp_max = (data?.main?.temp_max - 0).toFixed(2);
+    let temp_min = (data?.main?.temp_min - 0).toFixed(0);
+    let temp_max = (data?.main?.temp_max - 0).toFixed(0);
 
   const handleSubmit = (event) => {
       event.preventDefault();
@@ -53,7 +54,6 @@ function SearchWeather() {
   
   const addCity = (newCity) => {
     //console.log(newStudent);
-    //postStudent(newStudent);
     setCity((city) => [...city, newCity]);
   }
 
