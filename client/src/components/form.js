@@ -43,7 +43,7 @@ const Form = (props) => {
     return (
         <form onSubmit={handleSubmit}>
             <fieldset>
-                <label>First Name</label>
+                <label>Favorite City</label>
                 <input
                     type="text"
                     id="add-user-name"
@@ -53,17 +53,8 @@ const Form = (props) => {
                     onChange={handleNameChange}
 
                 />
-                <label>Last Name</label>
-                <input
-                    type="text"
-                    id="add-user-lastname"
-                    placeholder="Last Name"
-                    required
-                    value={student.lastname}
-                    onChange={handleLastnameChange}
-                />
             </fieldset>
-            <button type="submit">Add</button>
+            <button type="submit">Add City</button>
         </form>
     );
 };
